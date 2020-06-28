@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sound Booster</title>
+    <meta name="theme-color" content="#00324C">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="./css/header.css" />
+
+</head>
+
+<body>
+    <div class="header">
+        <a class="logo">Sound Booster</a>
+        <div class="header-right">
+            <a onclick="loadContent('home.html')">Home</a>
+            <a href="../index.html">Projects</a>
+            <a onclick="loadContent('../contact.html')">Contact</a>
+            <a onclick="loadContent('privacy-policy.html')">Privacy Policy</a>
+        </div>
+    </div>
+
+    <div id="content" style="text-align: center;">
+
+    </div>
+    <script>
+        async function loadContent(url) {
+            content.innerHTML = await (await fetch(url)).text();
+        }
+        window.onload = function() {
+            var url = window.location.href;
+            var li = url.lastIndexOf('#');
+            if (li == -1) {
+                loadContent('home.html');
+            } else {
+                var des = url.substring(li + 1, url.length);
+                loadContent(des + '.html');
+            }
+        }
+    </script>
+</body>
+
+</html>
